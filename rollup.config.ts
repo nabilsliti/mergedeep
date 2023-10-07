@@ -9,7 +9,7 @@ function onwarn(warning) {
 }
 
 const config = {
-    input: 'dist/esm/mergedeep.js',
+    input: 'dist/esm/index.js',
     output: {
         file: 'dist/browser/mergedeep.js',
         format: 'esm',

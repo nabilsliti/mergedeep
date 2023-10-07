@@ -1,14 +1,29 @@
-# mergedeep
+# @nblsliti/mergedeep
 
 A library for deep and recursive merging of Javascript collections
 
 It's an immutable deep merge.
 
+### Installation
+
+```sh
+# Install with npm
+npm install @nblsliti/mergedeep
+```
+
+### Use
+
+```js
+import { mergedeep } from "@nblsliti/mergedeep";
+const mergedeep = require("@nblsliti/mergedeep");
+```
 ### Example
 
 Note: When two compatible collections are encountered with the same key, it take the key of the second collection passed as parameter.
 
 ```js
+import { mergedeep } from "@nblsliti/mergedeep";
+
 const objOne = {
     prop: 'prop1',
     arr: [ 'val1', 'val2', 'val3' ],
@@ -162,5 +177,11 @@ const result = {
 };
 
 mergedeep(objOne, objTwo) // => result
-
 ```
+## API
+
+See [API doc](/documentation/doc/mergedeep.mergedeep.md).
+
+## License
+
+Licensed under [MIT](./LICENSE).

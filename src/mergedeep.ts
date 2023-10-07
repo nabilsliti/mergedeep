@@ -11,26 +11,29 @@ type ICollection<T = ISerializableObject | ISerializableArray> = Record<string, 
 const isObject = (obj: unknown): boolean => Boolean(obj) && typeof obj === 'object';
 
 /**
- * Recursively merge collections
+ * Recursively merge two collections and returns new merged collection
+ * @param colOne collection (object, array)
+ * @param colTow collection (object, array)
+ * @returns The merged collection 
  */
-export const mergedeep = <T = ISerializableObject | ISerializableArray>(source: ICollection<T>, target: ICollection<T>): ICollection<T> => {
-    if (!isObject(source) && !isObject(target)) {
+export const mergedeep = <T = ISerializableObject | ISerializableArray>(colOne: ICollection<T>, colTow: ICollection<T>): ICollection<T> => {
+    if (!isObject(colOne) && !isObject(colTow)) {
         return undefined;
     }
-    if (!isObject(source)) {
-        return target;
+    if (!isObject(colOne)) {
+        return colTow;
     }
-    if (!isObject(target)) {
-        return source;
+    if (!isObject(colTow)) {
+        return colOne;
     }
-    if (Array.isArray(source) && Array.isArray(target)) {
-        return target.concat(source);
+    if (Array.isArray(colOne) && Array.isArray(colTow)) {
+        return colTow.concat(colOne);
     }
 
-    const mergedObject = Object.assign({}, source);
-    Object.keys(target).forEach(key => {
-        const sourceValue = source[ key ];
-        const targetValue = target[ key ];
+    const mergedObject = Object.assign({}, colOne);
+    Object.keys(colTow).forEach(key => {
+        const sourceValue = colOne[ key ];
+        const targetValue = colTow[ key ];
 
         if (Array.isArray(sourceValue) && Array.isArray(targetValue)) {
             mergedObject[ key ] = targetValue.concat(sourceValue);

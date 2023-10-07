@@ -1,6 +1,6 @@
 name: Publish in NPM registry
 
-on: push
+on: release
 
 jobs:
   publish:
